@@ -1,0 +1,105 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">XYZ.com</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        <a class="nav-link" *ngIf="this.global.loggedInUserName" routerLink="/gallery">Gallery</a>
+        <a class="nav-link" routerLink="/about">About</a>
+      </div>
+
+    <div class="d-flex">
+      <div class="navbar-nav" *ngIf="!this.global.loggedInUserName">
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+      </div>
+      <div class="navbar-nav" *ngIf="this.global.loggedInUserName" style="color:#fff">
+        Hey {{this.global.loggedInUser.username}}
+      </div>
+      <div class="navbar-nav" *ngIf="this.global.loggedInUserName">
+        <a class="nav-link" (click)="logoutUser()">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">XYZ.com</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="this.global.loggedInUserName" routerLink="/gallery">Gallery</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+      </ul>
+      <!-- <div class="d-flex">
+        <li class="nav-item" *ngIf="!this.global.loggedInUserName">
+          <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="this.global.loggedInUserName" style="color:#fff">
+          Hey {{this.global.loggedInUser.username}}
+        </li>
+        <li class="nav-item"  *ngIf="this.global.loggedInUserName">
+          <a class="nav-link" (click)="logoutUser()">Logout</a>
+        </li>
+      </div> -->
+      <form class="d-flex">
+        <a *ngIf="!this.global.loggedInUserName" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+        <span *ngIf="this.global.loggedInUserName" class="nav-link"  style="color:#fff">Hey {{this.global.loggedInUser.username}}</span>
+        <a *ngIf="this.global.loggedInUserName" class="nav-link" (click)="logoutUser()">Logout</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="loginForm.form.valid && onLogin()" #loginForm="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group col-12">
+            <label>User ID</label>
+            <input type="text" name="userid" class="form-control" [(ngModel)]="userModel.userid" #userid="ngModel"
+              [ngClass]="{ 'is-invalid': loginForm.submitted && userid.invalid }" required>
+            <div *ngIf="loginForm.submitted && userid.invalid" class="invalid-feedback">
+              <div *ngIf="userid.errors.required">User ID is required</div>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" [(ngModel)]="userModel.password"
+              #password="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }" required>
+            <div *ngIf="loginForm.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" #closeLoginModal >Close</button>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

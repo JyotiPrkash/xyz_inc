@@ -1,0 +1,8 @@
+.input-textarea{
+    flex-grow: 1;
+    overflow: hidden auto;
+    line-height: 24px;
+    border: 1px solid gray;
+    margin: 1%;
+    border-radius: 5px;
+}

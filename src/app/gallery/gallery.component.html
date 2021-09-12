@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+  
+      <div class="col-sm-12 row">
+          <div class="row">
+              <div class="col-sm-3 img-box" *ngFor="let image of imagesList">
+                  <img (click)="selectImage(image)" src='{{image.download_url}}' class="img-css">
+                  <p class="author-text">{{image.author}}</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-9"></div>
+      <div class="col-sm-3">
+        <input type="button" value="Previous Page" [disabled]="imagePage == 1" class="btn btn-primary" (click)="imagePageCall('prev')">
+        <input type="button" value="Next Page" class="btn btn-primary" (click)="imagePageCall('next')">
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal -->
+<a class="nav-link" data-bs-toggle="modal" data-bs-target="#imageModal" style="opacity: 0;" #openImageModal></a>
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+          <div class="modal-header">
+            <h5 class="modal-title" >Photo By : {{selectedImageAuthor}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="{{selectedImageUrl}}" alt="image" class="selected-img-cls">
+          </div>
+      </div>
+    </div>
+  </div>
+  
