@@ -4,12 +4,47 @@
             <h2 class="about-primary-text">About Us</h2>
         </div>
         <div class="col-sm-6">
-            <h2 class="about-secondary-text">a digital marketing agency that's known for creating success stories.</h2>
+            <h2 class="about-secondary-text">
+                a digital marketing agency that's known for creating success stories.
+            </h2>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12 about-body-text">
-            A perfect marketing partner for all your digital marketing, branding and advertising needs with a focus on helping small and medium-sized business increase sales and revenue.
+            A perfect marketing partner for all your digital marketing, branding and
+            advertising needs with a focus on helping small and medium-sized business
+            increase sales and revenue.
+        </div>
+    </div>
+
+    <div class="row team-div">
+        <div class="col-sm-12 team-header">
+            <button class="btn btn-outline-success" (click)="toggle()" style="width: 50%">
+                <ng-container *ngIf="teamList.length == 0">
+                    Know the Team
+                    <i class="fa fa-angle-double-right"></i>
+                </ng-container>
+                <ng-container *ngIf="teamList.length != 0">
+                    <i class="fa fa-angle-double-left"></i>
+                    Hide
+                </ng-container>
+            </button>
+        </div>
+
+        <div class="col-sm-12 team-body" *ngIf="teamList.length != 0" [@listAnimation]="teamList.length">
+            <div class="row">
+            <div class="col-md-4 col-sm-12 team-box" *ngFor="let member of teamList">
+                
+                <div class="row">
+                    <img (click)="selectImage(image)" src='{{member.pic}}' class="col-md-6 col-sm-12 team-pic">
+                    <div class="col-md-6 col-sm-12" style="padding-top: 5%;">
+                        <p class="author-text">{{member.name}}</p>
+                        <p class="author-profile">{{member.profile}}</p>
+                    </div>
+                </div>
+
+            </div>
+            </div>
         </div>
     </div>
 </div>

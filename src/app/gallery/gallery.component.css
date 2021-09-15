@@ -5,6 +5,7 @@
 .img-css{
     height:14rem;
     width: 18rem;
+    cursor: pointer;
 }
 .selected-img-cls{
     width: 100%;

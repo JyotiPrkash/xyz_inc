@@ -7,8 +7,8 @@ import { AboutComponent } from './about/about.component';
 import { RouteGuard } from './route.guard';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/', pathMatch: 'full' },
-    { path: '', component: HomeComponent },
+    { path: 'home', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
     { path: 'gallery', component: GalleryComponent , canActivate: [RouteGuard]},
     { path: 'about', component: AboutComponent }
 ];

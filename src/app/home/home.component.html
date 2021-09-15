@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 row">
+      <p>Input box with mention functionality</p>
       <div class="col-sm-8 input-textarea">
-        <p>Input box with Own Logic</p>
+        
         <div class="visible-div" (click)="focusOnInput()" contentEditable="true">
           <span *ngFor="let word of sentence">
             <ng-container *ngIf="word">
@@ -31,10 +32,6 @@
         
       </div>
 
-      <div class="col-sm-8">
-        <p>Input box mention with @mention library</p>
-        <textarea id="mentionBox"></textarea>
-      </div>
     </div>
   </div>
 </div>
