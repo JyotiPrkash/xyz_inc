@@ -11,7 +11,8 @@ export class ServerService {
     this.userDB = [
       { userid: 'abc@media.com', password: 'abc123', username: 'tom' }, 
       { userid: 'def@media.com', password: 'def123', username: 'dick'},
-      { userid: 'jp@media.com', password: 'jp123', username: 'Jp'}
+      { userid: 'jp@media.com', password: 'jp123', username: 'Jp'},
+      { userid: 'jp2@media.com', password: 'jp123', username: 'Jp2'}
     ]
   }
 

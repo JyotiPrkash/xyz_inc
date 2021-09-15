@@ -1,8 +1,43 @@
 .input-textarea{
     flex-grow: 1;
-    overflow: hidden auto;
-    line-height: 24px;
+    /* overflow: hidden auto; */
+    line-height: 12px;
     border: 1px solid gray;
     margin: 1%;
     border-radius: 5px;
+    padding: 0px;
+    background: lightyellow;
+}
+
+.txtarea{
+    outline: none;
+    /* border: 1px solid green; */
+    color: lightyellow;
+    width: 0;
+    border: none;
+    float: right;
+    background: lightyellow;
+    width: 10px;
+}
+
+.mention-area{
+    outline: none;
+    border: none;
+    background: lightyellow;
+}
+
+.visible-div{
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    padding:1%;
+    background: lightyellow;
+}
+
+.mentioned-word{
+    width: 100%;
+    background: goldenrod;
+    border-radius: 10px;
+    padding: 2px 8px;
 }

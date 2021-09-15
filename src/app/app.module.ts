@@ -13,6 +13,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { AboutComponent } from './about/about.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TypeaheadModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

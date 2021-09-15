@@ -1,11 +1,40 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12 row">
-            <div class="col-sm-8 input-textarea">
-                <textarea [(ngModel)]="inputText" (keydown)="userTagging($event)" class="custom-textarea" name="" id="" cols="150" rows="5" placeholder="Type your way..">
+  <div class="row">
+    <div class="col-sm-12 row">
+      <div class="col-sm-8 input-textarea">
+        <p>Input box with Own Logic</p>
+        <div class="visible-div" (click)="focusOnInput()" contentEditable="true">
+          <span *ngFor="let word of sentence">
+            <ng-container *ngIf="word">
+              <span *ngIf="!word.isMention" class="normal-word">{{ word.value }}&nbsp;</span>
+              <span *ngIf="word.isMention" class="mentioned-word">{{ word.value }}&nbsp;</span>
+            </ng-container>
+          </span>
+          <input
+            type="text"
+            [(ngModel)]="mentionText"
+            [typeahead]="this.global.userDB"
+            (keyup.enter)="mentionSelected()"
+            typeaheadOptionField="username"
+            #mentionTextSelector
+            class="mention-area"/>
 
-                </textarea>
-            </div>
+          <textarea
+          name="actual-textarea"
+          (keyup)="addToVisibleDiv($event)"
+          [(ngModel)]="normalText"
+          #normalTextSelector
+          class="txtarea">
+          </textarea>
+         
         </div>
+        
+      </div>
+
+      <div class="col-sm-8">
+        <p>Input box mention with @mention library</p>
+        <textarea id="mentionBox"></textarea>
+      </div>
     </div>
+  </div>
 </div>
