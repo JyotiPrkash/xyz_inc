@@ -1,77 +1,75 @@
-.about-primary-text{
-    font-family: 'EXTRADIONARY-V1';
-    text-align: right;
-    font-size: 88px;
-    line-height: 80px;
-    max-width: 227px;
-    color: #1a1b58;
-    letter-spacing: -2px;
-    transition: 1s all ease;
-    transition-delay: .7s;
-    padding: 5% 0 0 6%;
-    float: left;
-    z-index: 999;
-    position: relative;
-    text-transform: uppercase;
+.about-primary-text {
+  font-family: "EXTRADIONARY-V1";
+  text-align: right;
+  font-size: 88px;
+  line-height: 80px;
+  max-width: 227px;
+  color: #1a1b58;
+  letter-spacing: -2px;
+  transition: 1s all ease;
+  transition-delay: 0.7s;
+  padding: 5% 0 0 6%;
+  float: left;
+  z-index: 999;
+  position: relative;
+  text-transform: uppercase;
 }
 
-.about-secondary-text{
-    font: 36px/60px EXTRADIONARY-V1;
-    color: #1a1b58;
-    max-width: 553px;
-    margin: auto;
-    letter-spacing: -2px;
-    padding: 2% 0 30px;
-    float: left;
-    text-transform: uppercase;
+.about-secondary-text {
+  font: 36px/60px EXTRADIONARY-V1;
+  color: #1a1b58;
+  max-width: 553px;
+  margin: auto;
+  letter-spacing: -2px;
+  padding: 2% 0 30px;
+  float: left;
+  text-transform: uppercase;
 }
 
-.about-body-text{
-    font: 23px/44px FlamaCondensedLight;
-    color: #1a1b58;
-    padding-bottom: 30px;
-    clear: both;
-    text-align: center;
-    letter-spacing: 1px;
+.about-body-text {
+  font: 23px/44px FlamaCondensedLight;
+  color: #1a1b58;
+  padding-bottom: 30px;
+  clear: both;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
-.team-div{
-    
+.team-div {
 }
 
-.team-header{
-    margin-bottom: 2%;
-    text-align: center;
+.team-header {
+  margin-bottom: 2%;
+  text-align: center;
 }
-.team-box{
-    margin-bottom:4%;
+.team-box {
+  margin-bottom: 4%;
 }
-.author-text{
-    line-height: 1.2;
-    color: #0A0A10;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 24px;
+.author-text {
+  line-height: 1.2;
+  color: #0a0a10;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 24px;
 }
-.author-profile{
-    color: #0A0A10;
+.author-profile {
+  color: #0a0a10;
 }
-.team-body{
-    /* background: #0A0A10; */
+.team-body {
+  /* background: #0A0A10; */
 }
 
-.team-pic{
-    height: 12rem;
-    width: 12rem;
+.team-pic {
+  height: 12rem;
+  width: 12rem;
 }
 
 @media screen and (max-width: 480px) {
-
-   .team-box{
-         text-align: center;
-   }
-   .team-pic{
-        margin-left: 25%;
-        margin-bottom: 2%;
-    }
+  .team-box {
+    text-align: center;
+  }
+  .team-pic {
+    margin-left: 25%;
+    margin-bottom: 2%;
+  }
 }

@@ -1,5 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '../global.service';
+import { ServerService } from '../server.service';
+
+declare var require: any
+var Highcharts = require('highcharts');
+// Load module after Highcharts is loaded
+require('highcharts/modules/exporting')(Highcharts);
+// Create the chart
+
 
 @Component({
   selector: 'app-home',
@@ -18,12 +26,31 @@ export class HomeComponent implements OnInit {
   atKeyCode = 50;
   spaceKeyCode = 32;
   shiftKeyCode = 16;
+  selectedCountry = '';
+  selectedCategory = '';
 
   sentence: any = [];
+  chartData: any;
+  newsData: any = [];
 
-  constructor(public global: GlobalService) { }
+  constructor(public global: GlobalService, private server: ServerService) {
+    this.selectedCountry = 'us';
+    this.selectedCategory = 'business';
+  }
 
   ngOnInit(): void {
+    this.getChartData();
+    // Highcharts.chart('container', { /*Highcharts options*/ });
+    this.searchNews();
+  }
+
+  getChartData() {
+    this.server.getChartData().subscribe((response) => {
+      this.chartData = response;
+      this.generateHighCharts();
+    }, (error) => {
+      this.chartData = [];
+    });
   }
 
   addToVisibleDiv(event) {
@@ -80,6 +107,70 @@ export class HomeComponent implements OnInit {
 
   focusOnInput() {
     this.normalTextSelector.nativeElement.focus();
+  }
+
+  generateHighCharts() {
+    Highcharts.chart('container', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'USD to EUR exchange rate over time'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Exchange rate'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
+
+      series: [{
+        type: 'area',
+        name: 'USD to EUR',
+        data: this.chartData
+      }]
+    });
+  }
+
+  searchNews() {
+    let query = "?country=" + this.selectedCountry + "&category=" + this.selectedCategory;
+
+    this.server.getNewsData(query).subscribe((response) => {
+      this.newsData = response['articles'];
+    }, (error) => {
+      this.newsData = [];
+    });
   }
 
 }

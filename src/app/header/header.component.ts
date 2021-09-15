@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '../global.service';
 import { ServerService } from '../server.service';
 import { CommonService } from '../common.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   userModel: any = {};
   @ViewChild('closeLoginModal') closeLoginModal: ElementRef;
-  
+
   constructor(public global: GlobalService, private server: ServerService, private common: CommonService, private router: Router) {
 
   }
@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
 
     if (!this.global.loggedInUser.hasOwnProperty('username')) {
       let loggedUser = JSON.parse(localStorage.getItem('userDetails'));
-      console.log("logged User is", loggedUser)
       if (!loggedUser) {
         this.global.isUserLoggedIn = false;
       } else {
@@ -39,7 +38,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin = function () {
-    console.log("login hit", this.userModel);
     this.global.userDB = JSON.parse(localStorage.getItem('userDB'));
     let isLoginSuccessful = this.global.userDB.findIndex((user) => {
       if (user.userid == this.userModel.userid && user.password == this.userModel.password) {
@@ -50,7 +48,6 @@ export class HeaderComponent implements OnInit {
         return user;
       }
     })
-    console.log(isLoginSuccessful)
     if (isLoginSuccessful != -1) {
       this.common.showSuccess("Login Successful", "Hey " + this.global.loggedInUser.username);
       this.closeLoginModal.nativeElement.click();
@@ -63,12 +60,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  logoutUser = function(){
-        this.router.navigate(['../home']);
-        localStorage.setItem("userDetails", null);
-        this.global.loggedInUser = null;
-        this.global.loggedInUserName = null;
-        
+  logoutUser = function () {
+    this.router.navigate(['../home']);
+    localStorage.setItem("userDetails", null);
+    this.global.loggedInUser = null;
+    this.global.loggedInUserName = null;
+
   }
 
 }

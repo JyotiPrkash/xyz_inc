@@ -1,25 +1,23 @@
-.imagefotter{
-    width:5rem;
-    height:5rem;
+.imagefotter {
+  width: 5rem;
+  height: 5rem;
 }
 
-
-.page-footer{
-    background: #212529;
-    color:#fff;
-    margin-top: 2%;
+.page-footer {
+  background: #212529;
+  color: #fff;
+  margin-top: 2%;
 }
-.f-line{
-    text-align: center;
+.f-line {
+  text-align: center;
 }
 
-.footer-style #Group-72{
-    fill: #fff;
+.footer-style #Group-72 {
+  fill: #fff;
 }
 
 @media screen and (max-width: 480px) {
-
-     .footer-banner{
-        display: none;
-    } 
+  .footer-banner {
+    display: none;
+  }
 }

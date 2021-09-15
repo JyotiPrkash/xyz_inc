@@ -25,8 +25,8 @@ import { GlobalService } from '../global.service';
 })
 export class AboutComponent implements OnInit {
 
-  teamList:object[] = [];
-  constructor(private global : GlobalService) { }
+  teamList: object[] = [];
+  constructor(private global: GlobalService) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +35,6 @@ export class AboutComponent implements OnInit {
     this.global.teamList.map((i) => {
       this.teamList.push(i);
     })
-    console.log(this.teamList)
   }
 
   hideItems() {

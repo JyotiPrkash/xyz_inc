@@ -33,17 +33,17 @@
 
         <div class="col-sm-12 team-body" *ngIf="teamList.length != 0" [@listAnimation]="teamList.length">
             <div class="row">
-            <div class="col-md-4 col-sm-12 team-box" *ngFor="let member of teamList">
-                
-                <div class="row">
-                    <img (click)="selectImage(image)" src='{{member.pic}}' class="col-md-6 col-sm-12 team-pic">
-                    <div class="col-md-6 col-sm-12" style="padding-top: 5%;">
-                        <p class="author-text">{{member.name}}</p>
-                        <p class="author-profile">{{member.profile}}</p>
-                    </div>
-                </div>
+                <div class="col-md-4 col-sm-12 team-box" *ngFor="let member of teamList">
 
-            </div>
+                    <div class="row">
+                        <img (click)="selectImage(image)" src='{{member.pic}}' class="col-md-6 col-sm-12 team-pic">
+                        <div class="col-md-6 col-sm-12" style="padding-top: 5%;">
+                            <p class="author-text">{{member.name}}</p>
+                            <p class="author-profile">{{member.profile}}</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
