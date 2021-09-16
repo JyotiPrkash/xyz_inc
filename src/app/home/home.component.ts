@@ -202,7 +202,7 @@ export class HomeComponent implements OnInit {
   }
 
   searchNews() {
-    let query = "?country=" + this.selectedCountry + "&category=" + this.selectedCategory;
+    let query = "&country=" + this.selectedCountry + "&topic=" + this.selectedCategory;
 
     this.server.getNewsData(query).subscribe((response) => {
       this.newsData = response['articles'];

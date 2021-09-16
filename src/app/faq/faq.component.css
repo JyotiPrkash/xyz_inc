@@ -1,3 +1,16 @@
 .text-input{
     background-color: lightyellow;
 }
+
+.header-text{
+    font: 36px/60px EXTRADIONARY-V1;
+    color: #1a1b58;
+    margin: auto;
+    letter-spacing: -2px;
+    padding: 2% 2%;
+    text-transform: uppercase;
+}
+
+.acc-group{
+    margin-bottom: 1%;
+}

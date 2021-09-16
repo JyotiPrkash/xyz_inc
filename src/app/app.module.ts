@@ -12,10 +12,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { FaqComponent } from './faq/faq.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { FaqComponent } from './faq/faq.component';
     FormsModule,
     ToastrModule.forRoot(),
     TypeaheadModule.forRoot(),
+    AccordionModule.forRoot(),
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

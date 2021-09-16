@@ -31,7 +31,7 @@ export class ServerService {
   }
 
   getNewsData(query) {
-    return this.http.get(this.global.newsAPI + query + "&apiKey=" + this.global.newsApiKey);
+    return this.http.get(this.global.newsAPI + query );
   }
 
 }

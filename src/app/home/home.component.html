@@ -82,13 +82,13 @@
         />
       </div>
       <div class="col-sm-12 new-div form-control" *ngFor="let news of newsData">
-        <p>{{ news.title }}</p>
-        <p>{{ news.description }}</p>
-        <p>
+        <p style="font-size: 20px;font-weight: 600;">{{ news.title }}</p>
+        <p style="font-size: 13px;">{{ news.description }}</p>
+        <p style="font-size: 13px;font-weight: 600;">
           Source : {{ news.source.name }} , Published At :
-          {{ news.publishedAt | date: "dd/MM/yyyy" }}
+          {{ news.publishedAt | date: "dd/MM/yyyy " }}
         </p>
-        <a href="{{ news.url }}" target="_blank">Read Full Story</a>
+        <a style="font-size: 13px;" href="{{ news.url }}" target="_blank">Read Full Story</a>
       </div>
     </div>
   </div>

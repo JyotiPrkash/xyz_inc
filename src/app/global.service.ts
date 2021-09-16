@@ -17,7 +17,7 @@ export class GlobalService {
   country: string[];
   category: string[];
 
-  newsApiKey: any = "31e8d1fc02994c6491eccfe8423713e5";
+  newsApiKey: any = "c59ab1cbae0ed8529fd0e6aed13bb097";
 
   constructor() {
     this.loggedInUser = {};
@@ -25,9 +25,9 @@ export class GlobalService {
     this.getImagesApi = 'https://picsum.photos/';
     this.randomImages = 'v2/list';
     this.sampleChartDataAPI = "https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json";
-    this.newsAPI = "https://newsapi.org/v2/top-headlines";
+    this.newsAPI = "https://gnews.io/api/v4/top-headlines?token=" + this.newsApiKey;
     this.country = ['us', 'ae', 'ar', 'br', 'ca', 'cu', 'cz', 'fr', 'gb', 'hk', 'in', 'jp', 'kr', 'mx', 'ng', 'nl', 'ph', 'rs', 'ru', 'za'];
-    this.category = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
+    this.category = ['breaking-news', 'world', 'nation', 'business', 'technology', 'entertainment', 'sports', 'science', 'health'];
     this.teamList = [
       {
         name: "Lily Aldrin",
