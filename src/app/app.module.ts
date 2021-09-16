@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { AboutComponent } from './about/about.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FooterComponent,
     HomeComponent,
     GalleryComponent,
-    AboutComponent
+    AboutComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     ToastrModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

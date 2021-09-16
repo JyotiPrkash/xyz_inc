@@ -26,12 +26,14 @@ export class HomeComponent implements OnInit {
   atKeyCode = 50;
   spaceKeyCode = 32;
   shiftKeyCode = 16;
+  backspaceKeyCode = 8;
   selectedCountry = '';
   selectedCategory = '';
 
   sentence: any = [];
   chartData: any;
   newsData: any = [];
+  mentionedWordsList: object[] = [];
 
   constructor(public global: GlobalService, private server: ServerService) {
     this.selectedCountry = 'us';
@@ -54,10 +56,46 @@ export class HomeComponent implements OnInit {
   }
 
   addToVisibleDiv(event) {
+
+    if (event.keyCode == this.backspaceKeyCode) {
+      // console.log(this.sentence);
+      // console.log(this.normalText);
+
+      let temp = this.normalText.split(' ');
+
+      this.mentionedWordsList = this.sentence.filter((word, index) => {
+        if (word.isMention) {
+          let mentionedObj = {
+            wordObj: word,
+            indexOfWordInSentence: index
+          }
+          temp.splice(index, 0, word);
+          return mentionedObj;
+        }
+      })
+
+      this.sentence = [];
+      for (let i = 0; i < temp.length; i++) {
+
+        if (typeof temp[i] !== 'object') {
+          let wordObj = {
+            value: temp[i],
+            isMention: false
+          }
+          if (wordObj.value != "" && !wordObj.isMention) {
+            this.sentence.push(wordObj)
+          }
+        } else {
+          this.sentence.push(temp[i]);
+        }
+      }
+      return;
+    }
+
     if (event.keyCode == this.shiftKeyCode) {
       return;
     }
-    if (event.keyCode != this.atKeyCode && event.keyCode != this.spaceKeyCode) {
+    if (event.keyCode != this.atKeyCode && event.keyCode != this.spaceKeyCode && event.keyCode != this.backspaceKeyCode) {
       let temp = this.normalText.split(' ');
       let lengthOfSentence = temp.length;
       let ind = this.sentence.length;
@@ -74,7 +112,7 @@ export class HomeComponent implements OnInit {
           this.sentence[ind + 1] = wordObj;
         }
       }
-    } else if (event.keyCode == this.spaceKeyCode) {
+    } else if (event.keyCode == this.spaceKeyCode && event.keyCode != this.backspaceKeyCode) {
       let temp = this.normalText.split(' ');
       let lengthOfSentence = temp.length;
       if (temp[lengthOfSentence - 1] != undefined) {

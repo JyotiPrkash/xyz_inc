@@ -8,6 +8,10 @@
   padding: 0px;
   background: lightyellow;
 }
+.visible-div:focus{
+  outline: 1px solid blue;
+  border-radius: 5px;
+}
 .new-div {
   margin-top: 1%;
 }
