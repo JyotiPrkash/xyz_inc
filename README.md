@@ -1,27 +1,33 @@
-# Xyz
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
 
-## Development server
+Libraries used : 
+    "bootstrap": "^5.1.1",
+    "highcharts": "^9.2.2",
+    "ngx-bootstrap": "^6.2.0",
+    "ngx-toastr": "^14.1.3",
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Homepage Features: 
+   - Input box with Mention functionality
+   - Highcharts showing timeseries chart
+   - Live news fetching based on type and country selection
 
-## Code scaffolding
+Gallery Features:
+   - Only visible to logged in users (Implemented route guard)
+   - dynamic images rendered, with an option to load new images with next and prev buttons
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+About Featues:
+   - Showing keymembers with Angular Animations on Show the team button click
 
-## Build
+FAQ Features:
+   - Toggling common FAQs on accordian
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+userDB used = [
+      { userid: 'abc@media.com', password: 'abc123', username: 'tom' },
+      { userid: 'def@media.com', password: 'def123', username: 'dick' },
+      { userid: 'jp@media.com', password: 'jp123', username: 'Jp' },
+      { userid: 'jp2@media.com', password: 'jp123', username: 'Jp2' },
+      { userid: 'harry@media.com', password: 'harry123', username: 'Harry' },
+      { userid: 'fred@media.com', password: 'fred123', username: 'Fred' },
+      { userid: 'billy@media.com', password: 'billy123', username: 'Billy' }
+    ]
