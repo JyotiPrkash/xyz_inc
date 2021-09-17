@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
     if (!this.global.userDB || this.global.userDB.length == 0) {
       this.server.setUsersInLocalStorage();
+      this.global.userDB = JSON.parse(localStorage.getItem('userDB'));
     }
 
     if (!this.global.loggedInUser.hasOwnProperty('username')) {
