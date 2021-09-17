@@ -13,7 +13,9 @@ export class ServerService {
       { userid: 'def@media.com', password: 'def123', username: 'dick' },
       { userid: 'jp@media.com', password: 'jp123', username: 'Jp' },
       { userid: 'jp2@media.com', password: 'jp123', username: 'Jp2' },
-      { userid: 'harry@media.com', password: 'harry123', username: 'Harry' }
+      { userid: 'harry@media.com', password: 'harry123', username: 'Harry' },
+      { userid: 'fred@media.com', password: 'fred123', username: 'Fred' },
+      { userid: 'billy@media.com', password: 'billy123', username: 'Billy' }
     ]
   }
 
