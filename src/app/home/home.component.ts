@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '../global.service';
 import { ServerService } from '../server.service';
+import {Store, select } from '@ngrx/store';
+import * as UserdataActions from '../userdata.actions';
+import * as fromUserData from '../userdata.selectors';
 
 declare var require: any
 var Highcharts = require('highcharts');
@@ -35,14 +38,13 @@ export class HomeComponent implements OnInit {
   newsData: any = [];
   mentionedWordsList: object[] = [];
 
-  constructor(public global: GlobalService, private server: ServerService) {
+  constructor(public global: GlobalService, private server: ServerService, private store:Store) {
     this.selectedCountry = 'us';
     this.selectedCategory = 'business';
   }
 
   ngOnInit(): void {
     this.getChartData();
-    // Highcharts.chart('container', { /*Highcharts options*/ });
     this.searchNews();
   }
 
@@ -204,11 +206,14 @@ export class HomeComponent implements OnInit {
   searchNews() {
     let query = "&country=" + this.selectedCountry + "&topic=" + this.selectedCategory;
 
-    this.server.getNewsData(query).subscribe((response) => {
-      this.newsData = response['articles'];
-    }, (error) => {
-      this.newsData = [];
-    });
+    this.store.dispatch(new UserdataActions.newsData(query));
+
+    this.store.pipe(select(fromUserData.getNewsData)).subscribe(
+      news => {
+        this.newsData = news['articles'];
+      }
+    )
+    
   }
 
 }

@@ -8,15 +8,15 @@ import { GlobalService } from './global.service';
 export class ServerService {
   userDB: object[];
   constructor(private http: HttpClient, private global: GlobalService) {
-    this.userDB = [
-      { userid: 'abc@media.com', password: 'abc123', username: 'tom' },
-      { userid: 'def@media.com', password: 'def123', username: 'dick' },
-      { userid: 'jp@media.com', password: 'jp123', username: 'Jp' },
-      { userid: 'jp2@media.com', password: 'jp123', username: 'Jp2' },
-      { userid: 'harry@media.com', password: 'harry123', username: 'Harry' },
-      { userid: 'fred@media.com', password: 'fred123', username: 'Fred' },
-      { userid: 'billy@media.com', password: 'billy123', username: 'Billy' }
-    ]
+    // this.userDB = [
+    //   { userid: 'abc@media.com', password: 'abc123', username: 'tom' },
+    //   { userid: 'def@media.com', password: 'def123', username: 'dick' },
+    //   { userid: 'jp@media.com', password: 'jp123', username: 'Jp' },
+    //   { userid: 'jp2@media.com', password: 'jp123', username: 'Jp2' },
+    //   { userid: 'harry@media.com', password: 'harry123', username: 'Harry' },
+    //   { userid: 'fred@media.com', password: 'fred123', username: 'Fred' },
+    //   { userid: 'billy@media.com', password: 'billy123', username: 'Billy' }
+    // ]
   }
 
   setUsersInLocalStorage = function () {

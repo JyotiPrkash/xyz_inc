@@ -3,6 +3,9 @@ import { GlobalService } from '../global.service';
 import { ServerService } from '../server.service';
 import { CommonService } from '../common.service';
 import { Router } from '@angular/router';
+import {Store, select } from '@ngrx/store';
+import * as UserdataActions from '../userdata.actions';
+import * as fromUserData from '../userdata.selectors';
 
 @Component({
   selector: 'app-header',
@@ -13,19 +16,22 @@ export class HeaderComponent implements OnInit {
   userModel: any = {};
   @ViewChild('closeLoginModal') closeLoginModal: ElementRef;
 
-  constructor(public global: GlobalService, private server: ServerService, private common: CommonService, private router: Router) {
+  constructor(public global: GlobalService, private server: ServerService, private common: CommonService, private router: Router, private store:Store) {
 
   }
 
   ngOnInit(): void {
 
-    this.global.userDB = JSON.parse(localStorage.getItem('userDB'));
+    this.store.dispatch(new UserdataActions.XyzUserdatas());
 
-    if (!this.global.userDB || this.global.userDB.length == 0) {
-      this.server.setUsersInLocalStorage();
-      this.global.userDB = JSON.parse(localStorage.getItem('userDB'));
-    }
+    this.store.pipe(select(fromUserData.getUserData)).subscribe(
+      userDB => {
+        this.global.userDB = userDB;
+      }
+    )
 
+    localStorage.setItem('userDB', JSON.stringify(this.global.userDB));
+ 
     if (!this.global.loggedInUser.hasOwnProperty('username')) {
       let loggedUser = JSON.parse(localStorage.getItem('userDetails'));
       if (!loggedUser) {
@@ -39,7 +45,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin = function () {
-    this.global.userDB = JSON.parse(localStorage.getItem('userDB'));
+    
     let isLoginSuccessful = this.global.userDB.findIndex((user) => {
       if (user.userid == this.userModel.userid && user.password == this.userModel.password) {
         localStorage.setItem("userDetails", JSON.stringify(user));
